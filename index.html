@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rambu Lalu Lintas</title>
+</head>
+<style>
+ *{
+    background-color: rgb(240, 240, 240);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  }
+ .rambu{
+     margin-left: 70px;
+     margin-top: 30px;
+ }
+ .img-rambu{
+     background: rgb(26, 26, 26);
+     height:470px;
+     width: 240px;
+     z-index: 1;
+     border-radius: 40px;
+ }
+ .lampuMerah{
+    background: rgb(59, 59, 59);  
+     width: 115px;
+     height: 115px;
+     z-index: 2;
+     position: absolute;
+     top:10.1%;
+     left: 10%;
+     border-radius: 50%;
+ }
+ .LampMerah{
+    background: rgb(253, 15, 15);
+    box-shadow: 1px 1px 80px rgb(194, 2, 2);
+ }
+ .lampuKuning{
+    background: rgb(59, 59, 59);  
+     width: 115px;
+     height: 115px;
+     z-index: 2;
+     position: absolute;
+     top: 31.5%;
+     left: 10.2%;
+     border-radius: 50%;
+ }
+ .LampKuning{
+    background: rgb(255, 225, 55);
+    box-shadow: 1px 1px 80px rgb(253, 216, 5);
+ }
+ .lampuHijau{
+    background: rgb(59, 59, 59);  
+     width: 115px;
+     height: 115px;
+     z-index: 2;
+     position: absolute;
+     top: 53%;
+     left: 10.2%;
+     border-radius: 50%;
+ }
+ .LampHijau{
+    background: rgb(95, 255, 55);
+    box-shadow: 1px 1px 80px rgb(95, 255, 55);
+ }
+ .p{
+     font-size: 100px;
+     position: absolute;
+     top:30%;
+     left: 56%;
+     z-index: 5;
+     background: transparent;
+ }
+
+ .p-merah {
+     color : rgb(253, 15, 15);
+     text-shadow: 1px 1px 80px rgb(194, 2, 2);
+ }
+
+ .p-kuning {
+     color : rgb(255, 225, 55);
+     text-shadow: 1px 1px 80px rgb(255, 225, 55);
+ }
+
+ .p-hijau {
+    color: rgb(95, 255, 55);
+    text-shadow: 1px 1px 80px rgb(95, 255, 55);
+ }
+
+ .p-time{
+     text-align: center;
+
+ }
+ .tiang{
+     background:rgb(228, 195, 7); 
+     height: 70px;
+     width: 820px;
+     z-index: 3;
+     position: absolute;
+     bottom: 55%;
+     left: 23.3%;
+     border-top-right-radius: 40px;
+ }
+ .tiang2{
+     background:rgb(228, 195, 7); 
+     height: 420px;
+     width: 70px;
+     z-index: 3;
+     position: absolute;
+     bottom: 1%;
+     left: 78.3%;
+     border-top-right-radius: 40px;
+ }
+ .kotak{
+    background:rgb(44, 44, 44); 
+     height: 120px;
+     width: 200px; 
+     z-index: 4;
+     position: absolute;
+     bottom: 52%;
+     left: 55%;
+     border-radius: 20px
+ }
+ .kotak2{
+    background:rgb(112, 112, 112); 
+     height: 100px;
+     width: 180px; 
+     z-index: 4;
+     position: absolute;
+     bottom: 53.4%;
+     left: 55.7%;
+     border-radius: 20px
+ }
+</style>
+<body>
+    <div class="rambu">
+        <div class="img-rambu"></div>
+    </div>
+    <div class="lampu">
+        <div class="merah">
+            <div class="lampuMerah"></div>
+        </div>
+        <div class="kuning">
+            <div class="lampuKuning"></div>
+        </div>
+        <div class="hijau">
+            <div class="lampuHijau"></div>
+        </div>
+        <div class="tiangLamp">
+                <div class="tiang"></div>
+            </div>
+        <div class="tiangLamp">
+                <div class="tiang2"></div>
+        </div>
+        <div class="tiangkotak">
+                <div class="kotak"></div>
+        </div>
+        <div class="tiangkotak">
+                <div class="kotak2"></div>
+        </div>
+    </div>
+
+        <div class="p"></div>
+
+
+</body>
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        function set(){
+            var date = new Date();
+            var waktu = date.getSeconds();
+            console.log(waktu)
+
+            //Logic Trafic Light
+                if (waktu > 0 && waktu <= 37){
+                $('.lampuMerah').addClass('LampMerah');
+                $('.lampuKuning').removeClass('LampKuning');
+                $('.lampuHijau').removeClass('LampHijau');
+            }else if(waktu > 37 && waktu <= 57){
+                $('.lampuMerah').removeClass('LampMerah');
+                $('.lampuKuning').removeClass('LampKuning');
+                $('.lampuHijau').addClass('LampHijau');
+            }else if(waktu > 57 && waktu <= 59){
+                $('.lampuMerah').removeClass('LampMerah');
+                $('.lampuKuning').addClass('LampKuning');
+                $('.lampuHijau').removeClass('LampHijau');
+            }else{
+                $('.lampuMerah').removeClass('LampMerah');
+                $('.lampuKuning').removeClass('LampKuning');
+                $('.lampuHijau').removeClass('LampHijau');
+            }
+
+            // Logic Time Color
+            if (waktu > 0 && waktu < 37){
+                $('.p').addClass('p-merah');
+                $('.p').removeClass('p-kuning');
+                $('.p').removeClass('p-hijau');
+            }else if(waktu > 37 && waktu < 57){
+                $('.p').removeClass('p-merah');
+                $('.p').removeClass('p-kuning');
+                $('.p').addClass('p-hijau');
+            }else if(waktu > 57 && waktu < 59){
+                $('.p').removeClass('p-merah');
+                $('.p').addClass('p-kuning');
+                $('.p').removeClass('p-hijau');
+            }else{
+                $('.p').removeClass('p-merah');
+                $('.p').removeClass('p-kuning');
+                $('.p').removeClass('p-hijau');
+            }
+
+            //Logic Kurang Waktu
+            if(waktu > 0 && waktu < 37){
+                waktu1 = waktu - 36;
+            }else if((waktu > 37 && waktu < 57)){
+                waktu1 = waktu - 56;
+            }else if(waktu > 57 && waktu <= 59){
+                waktu1 ;
+            }
+            
+            $('.p').text(waktu1)
+        }
+        setInterval(set,1000)
+        
+    })
+
+</script>
+</html>
